@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+      - develop
       - release
     tags: ["v*"]
 
@@ -19,7 +20,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81 # v5
         with:
-          images: ghcr.io/edgeandnode/graph-gateway
+          images: ghcr.io/graphops/graph-gateway
           tags: |
             type=ref,event=tag
             type=sha
@@ -28,7 +29,7 @@ jobs:
         uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
