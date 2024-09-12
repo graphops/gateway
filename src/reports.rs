@@ -2,7 +2,7 @@ use anyhow::{anyhow, Context};
 use ordered_float::NotNan;
 use prost::Message;
 use serde_json::json;
-use thegraph_core::{Address, AllocationId, DeploymentId, IndexerId};
+use thegraph_core::{AllocationId, DeploymentId, IndexerId};
 use tokio::sync::mpsc;
 use toolshed::concat_bytes;
 
@@ -13,7 +13,7 @@ pub struct ClientRequest {
     pub response_time_ms: u16,
     pub result: Result<(), errors::Error>,
     pub api_key: String,
-    pub user_address: Address,
+    pub user_address: String,
     pub grt_per_usd: NotNan<f64>,
     pub indexer_requests: Vec<IndexerRequest>,
     pub request_bytes: u32,
