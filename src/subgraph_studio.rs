@@ -75,7 +75,7 @@ impl Client {
             .map(|api_key| {
                 let api_key = APIKey {
                     key: api_key.key,
-                    user_address: api_key.user_address,
+                    user: api_key.user_address,
                     query_status: api_key.query_status,
                     domains: api_key.domains,
                     max_budget_usd: api_key.max_budget.and_then(|b| b.try_into().ok()),

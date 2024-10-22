@@ -130,7 +130,7 @@ where
                 return ResponseFuture::error(graphql::error_response(Error::Auth(err)));
             }
         };
-        tracing::debug!(user_address = ?auth.user, api_key = %auth.key);
+        tracing::debug!(user = ?auth.user, api_key = %auth.key);
 
         // Insert the `AuthSettings` extension into the request
         req.extensions_mut().insert(auth);

@@ -36,7 +36,7 @@ impl AuthSettings {
 #[derive(Clone, Debug, Default, Deserialize)]
 pub struct APIKey {
     pub key: String,
-    pub user_address: String,
+    pub user: String,
     pub query_status: QueryStatus,
     #[serde_as(as = "Option<serde_with::TryFromInto<f64>>")]
     #[serde(rename = "max_budget")]
@@ -105,7 +105,7 @@ impl AuthContext {
 
         Ok(AuthSettings {
             key: api_key.key.clone(),
-            user: api_key.user_address.clone(),
+            user: api_key.user.clone(),
             authorized_subgraphs: api_key.subgraphs.clone(),
             budget_usd: api_key.max_budget_usd,
         })
